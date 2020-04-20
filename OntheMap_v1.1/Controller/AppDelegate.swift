@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -16,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Initialize sign-in
+        GIDSignIn.sharedInstance().clientID = "733297059039-ckc211hlfjrege9jsbeaddbrvgsfudpr.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        
+        //Add Facebook Login
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+
         return true
     }
 
@@ -32,18 +44,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-    func application(application: UIApplication,
-      didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        // Initialize sign-in
-        GIDSignIn.sharedInstance().clientID = "733297059039-ckc211hlfjrege9jsbeaddbrvgsfudpr.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance().delegate = self
-        return true
-    }
     
     @available(iOS 9.0, *)
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    
+        ApplicationDelegate.shared.application(
+               app,
+               open: url,
+               sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+               annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
       return GIDSignIn.sharedInstance().handle(url)
     }
 
@@ -73,5 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       // ...
     }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+       AppEvents.activateApp()
+     }
+    
 }
 

@@ -10,6 +10,9 @@ import UIKit
 import Foundation
 import CoreFoundation
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+
 
 enum udacityURL: String {
     case https = "https://onthemap-api.udacity.com/v1/session"
@@ -26,9 +29,10 @@ class LoginViewController: UIViewController {
         
         // Automatically sign in the user.
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        
+            
     }
     
+    @IBOutlet weak var FBloginButton: UIButton!
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
