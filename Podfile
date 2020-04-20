@@ -6,5 +6,9 @@ use_frameworks!
 target 'OntheMap_v1.1' do
 pod 'Firebase'	
 pod 'GoogleSignIn'
+pod 'FBSDKCoreKit/Swift'
+pod 'FBSDKLoginKit/Swift'
+pod 'FBSDKShareKit/Swift'
+
 
 end
