@@ -11,6 +11,7 @@
 		8F3F6C6F24349F0300857265 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F6C6E24349F0300857265 /* Struct.swift */; };
 		8F3F6C722434A39000857265 /* LOGINRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F6C712434A39000857265 /* LOGINRequest.swift */; };
 		8F41963C244CC1DC002FE60E /* GoogleService-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F41963B244CC1DC002FE60E /* GoogleService-info.plist */; };
+		8F419695244F8164002FE60E /* Keychainitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F419694244F8164002FE60E /* Keychainitem.swift */; };
 		8FB1866B241FE2F80003EDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB1866A241FE2F80003EDA8 /* AppDelegate.swift */; };
 		8FB1866D241FE2F80003EDA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB1866C241FE2F80003EDA8 /* SceneDelegate.swift */; };
 		8FB1866F241FE2F80003EDA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB1866E241FE2F80003EDA8 /* LoginViewController.swift */; };
@@ -44,6 +45,8 @@
 		8F3F6C6E24349F0300857265 /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		8F3F6C712434A39000857265 /* LOGINRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOGINRequest.swift; sourceTree = "<group>"; };
 		8F41963B244CC1DC002FE60E /* GoogleService-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-info.plist"; sourceTree = SOURCE_ROOT; };
+		8F419692244F6747002FE60E /* OntheMap_v1.1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OntheMap_v1.1.entitlements; sourceTree = "<group>"; };
+		8F419694244F8164002FE60E /* Keychainitem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychainitem.swift; sourceTree = "<group>"; };
 		8FA6E643EC8B596B00B9C520 /* Pods_OntheMap_v1_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OntheMap_v1_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB18667241FE2F80003EDA8 /* OntheMap_v1.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OntheMap_v1.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB1866A241FE2F80003EDA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +115,14 @@
 			path = APIRequests;
 			sourceTree = "<group>";
 		};
+		8F419693244F814E002FE60E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F419694244F8164002FE60E /* Keychainitem.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		8FB1865E241FE2F80003EDA8 = {
 			isa = PBXGroup;
 			children = (
@@ -137,11 +148,13 @@
 		8FB18669241FE2F80003EDA8 /* OntheMap_v1.1 */ = {
 			isa = PBXGroup;
 			children = (
+				8F419692244F6747002FE60E /* OntheMap_v1.1.entitlements */,
 				8FFCBC8B242F3D1100DF7891 /* View */,
 				8F3F6C702434A36700857265 /* APIRequests */,
 				8FFCBC8C242F3D1700DF7891 /* Controller */,
 				8FB18678241FE2FA0003EDA8 /* Info.plist */,
 				8F41963B244CC1DC002FE60E /* GoogleService-info.plist */,
+				8F419693244F814E002FE60E /* Supporting Files */,
 			);
 			path = OntheMap_v1.1;
 			sourceTree = "<group>";
@@ -383,6 +396,7 @@
 				8F3F6C722434A39000857265 /* LOGINRequest.swift in Sources */,
 				8FB1866F241FE2F80003EDA8 /* LoginViewController.swift in Sources */,
 				8FB1866B241FE2F80003EDA8 /* AppDelegate.swift in Sources */,
+				8F419695244F8164002FE60E /* Keychainitem.swift in Sources */,
 				8FB1866D241FE2F80003EDA8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,6 +571,7 @@
 			baseConfigurationReference = 340D76B036C6052CF6F9C4E1 /* Pods-OntheMap_v1.1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OntheMap_v1.1/OntheMap_v1.1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5KQL8V98V9;
 				INFOPLIST_FILE = OntheMap_v1.1/Info.plist;
@@ -576,6 +591,7 @@
 			baseConfigurationReference = 043BCB4999CD1FD8EEE7E5EE /* Pods-OntheMap_v1.1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OntheMap_v1.1/OntheMap_v1.1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5KQL8V98V9;
 				INFOPLIST_FILE = OntheMap_v1.1/Info.plist;
