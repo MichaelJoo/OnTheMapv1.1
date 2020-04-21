@@ -75,6 +75,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="FB Login"/>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x2t-Xo-vbt">
+                                <rect key="frame" x="87" y="531" width="240" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -104,6 +109,7 @@
                         <outlet property="FBloginButton" destination="3cR-1p-KUk" id="Ky7-fe-bBx"/>
                         <outlet property="emailAddress" destination="RxB-hE-dNK" id="PX4-oZ-2AK"/>
                         <outlet property="loginButton" destination="eTg-Zq-tEE" id="nF6-8z-6Oj"/>
+                        <outlet property="loginProviderStackView" destination="x2t-Xo-vbt" id="aaY-Tg-K9W"/>
                         <outlet property="password" destination="cAq-ub-Q8z" id="acy-LE-cQf"/>
                     </connections>
                 </viewController>
