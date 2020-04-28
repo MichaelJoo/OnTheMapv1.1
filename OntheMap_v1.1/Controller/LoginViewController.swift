@@ -51,12 +51,19 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+
     @IBAction func loginTabbed(_ sender: UIButton) {
         
         let useremail = emailAddress.text!
         let userpassword = password.text!
         
-        LOGINRequest.loginUdacity(username: useremail, password: userpassword )
+        LOGINRequest.loginUdacity(username: useremail, password: userpassword)
+        
+        //To add codes to prevent below function from being called if there loginRequest had error//
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let TabBarController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TabBarController
+        self.present(TabBarController, animated: true, completion: nil)
     }
     
     @IBAction func signUp(_ sender: Any) {
@@ -141,7 +148,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         
     private func saveUserInKeychain(_ userIdentifier: String) {
             do {
-                try KeychainItem(service: "com.example.apple-samplecode.juice", account: "userIdentifier").saveItem(userIdentifier)
+                try KeychainItem(service: "Do-Hyung-Joo.OntheMap-v1-1", account: "userIdentifier").saveItem(userIdentifier)
             } catch {
                 print("Unable to save userIdentifier to keychain.")
             }
