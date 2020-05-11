@@ -57,18 +57,19 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         let useremail = emailAddress.text!
         let userpassword = password.text!
         
-        LOGINRequest.loginUdacity(username: useremail, password: userpassword) {
+            OnTheMapClient.login(username: useremail, password: userpassword) {
             (success, error) in DispatchQueue.main.async {
             if success {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let TabBarController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TabBarController
             self.present(TabBarController, animated: true, completion: nil)
+                
             } else {
-                print("Invalid username or password")
+                let alertVC = UIAlertController(title: "Login Failure", message: "Invalid Username and/or password", preferredStyle: .alert)
+                self.present(alertVC, animated: true, completion: nil)
             }
         }
         }
-        
     }
     
     @IBAction func signUp(_ sender: Any) {
@@ -76,6 +77,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+    
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
       withError error: NSError!) {
