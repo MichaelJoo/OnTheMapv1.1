@@ -33,13 +33,14 @@ class OnTheMapClient {
             
             let decoder = JSONDecoder()
                    do {
-                    let responseObject = try decoder.decode(ResponseType.self, from: data!)
+                    let responseObject = try decoder.decode(ResponseType.self, from: newData!)
                        DispatchQueue.main.async {
                            completion(responseObject, nil)
                        }
                    } catch {
+                    print(error)
                        do {
-                        let errorResponse = try decoder.decode(UdacityResponse.self, from: data!) as Error
+                        let errorResponse = try decoder.decode(UdacityResponse.self, from: newData!) as Error
                            DispatchQueue.main.async {
                                completion(nil, errorResponse)
                            }
