@@ -10,33 +10,33 @@ import Foundation
 
 struct SessionResponse: Codable {
     
-    let success: Bool
-    let accountData: AccountData
-    let sessionData: SessionData
+    let account: account
+    let session: session
+
 }
 
 
-struct AccountData: Codable {
+struct account: Codable {
     
     let registered: Bool
     let key: String
     
     enum CodingKeys: String, CodingKey {
-    case registered
-    case key
+    case registered = "registered"
+    case key = "key"
     
 }
     
 }
 
-struct SessionData: Codable {
+struct session: Codable {
     
     let sessionId: String
-    let expiration: Date
+    let expiration: String
     
     enum CodingKeys: String, CodingKey {
-       case sessionId
-       case expiration
+       case sessionId = "id"
+       case expiration = "expiration"
 }
 
 }
