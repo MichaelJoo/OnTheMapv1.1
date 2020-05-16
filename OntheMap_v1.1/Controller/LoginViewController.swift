@@ -66,6 +66,8 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             
             OnTheMapClient.getStudentLocation() { StudentInformation, error in
                 
+                MapViewController.mapView()
+                
                 }
 
             } else {
