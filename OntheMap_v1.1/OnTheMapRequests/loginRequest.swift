@@ -10,6 +10,16 @@ import Foundation
 
 struct LoginRequest: Codable {
     
+    let loginInfo: udacity
+    
+    enum CodingKeys: String, CodingKey {
+        case loginInfo = "udacity"
+    }
+    
+}
+
+struct udacity: Codable {
+    
     let username: String
     let password: String
     
