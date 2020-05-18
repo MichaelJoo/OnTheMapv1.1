@@ -128,7 +128,6 @@ class OnTheMapClient {
     class func getStudentLocation(completion: @escaping ([studentDetails], Error?) -> Void) {
         
         let URL = Endpoints.GetStudentLocation.url
-        let locations = StudentInformation.self
         
         taskForGETRequest(url: URL, responseType: StudentInformation.self) {
             response, error in

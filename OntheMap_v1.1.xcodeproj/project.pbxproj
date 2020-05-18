@@ -225,9 +225,9 @@
 				8FB1866A241FE2F80003EDA8 /* AppDelegate.swift */,
 				8FB1866C241FE2F80003EDA8 /* SceneDelegate.swift */,
 				8FB1866E241FE2F80003EDA8 /* LoginViewController.swift */,
+				8FF82B7724575AD300CB12BF /* ListViewController.swift */,
 				8FF82B7524575AC800CB12BF /* MapViewController.swift */,
 				8FC506F42457649B00C5E1BF /* TabBarController.swift */,
-				8FF82B7724575AD300CB12BF /* ListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

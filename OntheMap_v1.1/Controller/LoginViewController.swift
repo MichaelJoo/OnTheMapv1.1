@@ -64,11 +64,6 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             let TabBarController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TabBarController
             self.present(TabBarController, animated: true, completion: nil)
             
-            OnTheMapClient.getStudentLocation() { StudentInformation, error in
-                
-                MapViewController.mapView()
-                
-                }
 
             } else {
                 let alertVC = UIAlertController(title: "Login Failure", message: "Invalid Username and/or password", preferredStyle: .alert)
