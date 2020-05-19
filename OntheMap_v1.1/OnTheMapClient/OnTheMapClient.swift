@@ -14,13 +14,15 @@ class OnTheMapClient {
         
         case PostUdacity
         case GetStudentLocation
+        case PostStudentLocation
         
         
         var StringValue: String {
             switch self {
             
             case .PostUdacity: return "https://onthemap-api.udacity.com/v1/session"
-            case .GetStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
+            case .GetStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
+            case .PostStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
             
             }
         }
@@ -141,6 +143,20 @@ class OnTheMapClient {
         }
     }
     
+    class func postStudentLocation (completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
+        
+        let URL = Endpoints.PostStudentLocation.url
+        let newStudentInfo: String = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
+        
+        taskForPOSTRequest(url: URL, responseType: NewStudentLocationCreated.self, body: newStudentInfo) {
+            response, error in
+                if error == nil {
+                    completion(true, nil)
+                } else {
+                    completion(false, nil)
+                }
+            }
+    }
     
 }
     

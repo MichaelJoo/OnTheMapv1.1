@@ -13,37 +13,46 @@ class ListViewController: UITableViewController {
     
     @IBOutlet var listView: UITableView!
     
+    var students = [studentDetails]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         listView.delegate = self
         listView.dataSource = self
-        
-        self.listView.reloadData()
+    
         
         OnTheMapClient.getStudentLocation(completion: { (studentInformation, error) in
             
-            var students = studentInformation
-            
-            func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-                return students.count
-            }
-            
-            func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                
-                let cell = tableView.dequeueReusableCell(withIdentifier: "listViewTableCell")!
-                
-                let student = students[indexPath.row]
-                
-                cell.textLabel?.text = student.firstName + student.lastName
-                cell.detailTextLabel?.text = student.mediaURL
-                cell.imageView?.image = UIImage(named: "icon_pin")
-                
-                return cell
-            }
-            
+            self.students = studentInformation
+            self.listView.reloadData()
+        
         })
+        
+        OnTheMapClient.postStudentLocation(completion: {(success, error) in
+             
+        })
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return students.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: "listViewTableCell")!
+        
+        cell = UITableViewCell(style: .subtitle, reuseIdentifier: "listViewTableCell")
+        
+        let student = students[indexPath.row]
+        
+        cell.textLabel?.text = student.firstName + student.lastName
+        cell.detailTextLabel?.text = student.mediaURL
+        cell.imageView?.image = UIImage(named: "icon_pin")
+        
+        return cell
     }
     
 }
