@@ -27,11 +27,6 @@ class ListViewController: UITableViewController {
             
             self.students = studentInformation
             self.listView.reloadData()
-        
-        })
-        
-        OnTheMapClient.postStudentLocation(completion: {(success, error) in
-             
         })
         
     }

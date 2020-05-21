@@ -84,6 +84,7 @@ class OnTheMapClient {
             }
               return
           }
+          
           let range = 5..<data!.count
           let newData = data?.subdata(in: range) /* subset response data! */
           print(String(data: newData!, encoding: .utf8)!)
@@ -142,11 +143,34 @@ class OnTheMapClient {
             }
         }
     }
+
     
-    class func postStudentLocation (completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
+    class func getUniqueStudentNames(Session: SessionResponse, completion: @escaping ([studentDetails], Error?) -> Void) {
+        
+        let loggedinuser = Session.account
+        
+        let uniqueKey: String = loggedinuser.key
+        
+        let studentlocationURL: String = "https://onthemap-api.udacity.com/v1/StudentLocation"
+        
+        let url = URL(string: uniqueKey + studentlocationURL)!
+        
+        taskForGETRequest(url: url, responseType: StudentInformation.self) {
+            response, error in
+            if let response = response {
+                completion(response.studentInfo, nil)
+                print(response)
+            } else {
+                completion([], error)
+                print(error!)
+            }
+        }
+    }
+    
+    class func postStudentLocation (student: studentDetails, completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
         
         let URL = Endpoints.PostStudentLocation.url
-        let newStudentInfo: String = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
+        let newStudentInfo: String = "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
         
         taskForPOSTRequest(url: URL, responseType: NewStudentLocationCreated.self, body: newStudentInfo) {
             response, error in
