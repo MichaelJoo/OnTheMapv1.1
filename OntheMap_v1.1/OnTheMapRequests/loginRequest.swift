@@ -10,7 +10,7 @@ import Foundation
 
 struct LoginRequest: Codable {
     
-    let loginInfo: udacity
+    let loginInfo: Udacity
     
     enum CodingKeys: String, CodingKey {
         case loginInfo = "udacity"
@@ -18,7 +18,7 @@ struct LoginRequest: Codable {
     
 }
 
-struct udacity: Codable {
+struct Udacity: Codable {
     
     let username: String
     let password: String

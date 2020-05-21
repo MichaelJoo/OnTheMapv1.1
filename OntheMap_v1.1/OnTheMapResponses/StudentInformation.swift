@@ -11,7 +11,7 @@ import Foundation
 
 struct StudentInformation: Codable {
     
-    let studentInfo: [studentDetails]
+    let studentInfo: [StudentDetails]
     
     enum CodingKeys: String, CodingKey {
         case studentInfo = "results"
@@ -21,7 +21,7 @@ struct StudentInformation: Codable {
 //Adding Equatable protocol to array within StudentInfomation struct to enable sequence operations as below description.
 //  Some sequence and collection operations can be used more simply when the elements conform to Equatable. For example, to check whether an array contains a particular value, you can pass the value itself to the contains(_:) method when the array’s element conforms to Equatable instead of providing a closure that determines equivalence. The following example shows how the contains(_:) method can be used with an array of strings
 
-struct studentDetails: Codable {
+struct StudentDetails: Codable {
     
     let createdAt: String
     let firstName: String

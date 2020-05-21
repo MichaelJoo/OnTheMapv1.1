@@ -13,7 +13,7 @@ class ListViewController: UITableViewController {
     
     @IBOutlet var listView: UITableView!
     
-    var students = [studentDetails]()
+    var students = [StudentDetails]()
     
     
     override func viewDidLoad() {
@@ -23,9 +23,9 @@ class ListViewController: UITableViewController {
         listView.dataSource = self
     
         
-        OnTheMapClient.getStudentLocation(completion: { (studentInformation, error) in
+        OnTheMapClient.getStudentLocation(completion: { (StudentInformation, error) in
             
-            self.students = studentInformation
+            self.students = StudentInformation
             self.listView.reloadData()
         })
         

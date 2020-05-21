@@ -18,9 +18,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
            super.viewDidLoad()
         
-        OnTheMapClient.getStudentLocation(completion: { (studentInformation, error) in
+        OnTheMapClient.getStudentLocation(completion: { (StudentInformation, error) in
                             
-                for studentInfo in studentInformation {
+                for studentInfo in StudentInformation {
                     
                     let pointAnnotation = MKPointAnnotation()
                     pointAnnotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(studentInfo.latitude), CLLocationDegrees(studentInfo.longitude))

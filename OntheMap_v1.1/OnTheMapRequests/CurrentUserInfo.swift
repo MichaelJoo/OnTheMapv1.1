@@ -10,7 +10,7 @@ import Foundation
 
 struct CurrentUserInfo: Codable {
     
-    var locations = [studentDetails]()
+    var locations = [StudentDetails]()
     var user: PublicUserInfoDetails?
     static var shared = CurrentUserInfo()
     

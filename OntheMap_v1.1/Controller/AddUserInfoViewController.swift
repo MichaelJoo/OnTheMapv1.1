@@ -11,20 +11,17 @@ import Foundation
 
 class AddUserInfoViewController: UIViewController {
     
-    var currentSession = SessionResponse.self
+    var currentSession = SessionResponse(account: Account(registered: true, key: ""), session: Session(sessionId: "", expiration: ""))
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        OnTheMapClient.getUniqueStudentNames(Session: currentSession, completion: <#T##([studentDetails], Error?) -> Void#>)
+        OnTheMapClient.getUniqueStudentNames(Session: currentSession) { (studentDetails, error) in
+            
+        }
      
-        
-        OnTheMapClient.getUniqueStudentNames(Session: SessionResponse) { ([studentDetails], Error?) in
-            
-        }
-            
-        }
-        
+    }
+    
     }
 
 

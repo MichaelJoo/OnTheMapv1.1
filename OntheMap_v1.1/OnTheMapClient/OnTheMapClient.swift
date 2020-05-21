@@ -47,6 +47,7 @@ class OnTheMapClient {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
+                    print(responseObject)
                 }
             } catch {
                 print(error)
@@ -116,7 +117,7 @@ class OnTheMapClient {
     class func login (username: String, password: String, _ completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
         
         let URL = Endpoints.PostUdacity.url
-        let credentials = udacity(username: username, password: password)
+        let credentials = Udacity(username: username, password: password)
         let loginbody = LoginRequest(loginInfo: credentials)
     
         taskForPOSTRequest(url: URL, responseType: SessionResponse.self, body: loginbody) { response, error in
@@ -128,7 +129,7 @@ class OnTheMapClient {
         }
 }
     
-    class func getStudentLocation(completion: @escaping ([studentDetails], Error?) -> Void) {
+    class func getStudentLocation(completion: @escaping ([StudentDetails], Error?) -> Void) {
         
         let URL = Endpoints.GetStudentLocation.url
         
@@ -145,15 +146,15 @@ class OnTheMapClient {
     }
 
     
-    class func getUniqueStudentNames(Session: SessionResponse, completion: @escaping ([studentDetails], Error?) -> Void) {
+    class func getUniqueStudentNames(Session: SessionResponse, completion: @escaping ([StudentDetails], Error?) -> Void) {
         
         let loggedinuser = Session.account
         
         let uniqueKey: String = loggedinuser.key
         
-        let studentlocationURL: String = "https://onthemap-api.udacity.com/v1/StudentLocation"
+        let studentlocationURL: String = "https://onthemap-api.udacity.com/v1/StudentLocation?uniqueKey="
         
-        let url = URL(string: uniqueKey + studentlocationURL)!
+        let url = URL(string: studentlocationURL + uniqueKey)!
         
         taskForGETRequest(url: url, responseType: StudentInformation.self) {
             response, error in
@@ -167,7 +168,7 @@ class OnTheMapClient {
         }
     }
     
-    class func postStudentLocation (student: studentDetails, completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
+    class func postStudentLocation (student: StudentDetails, completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
         
         let URL = Endpoints.PostStudentLocation.url
         let newStudentInfo: String = "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"

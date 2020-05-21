@@ -10,13 +10,13 @@ import Foundation
 
 struct SessionResponse: Codable {
     
-    let account: account
-    let session: session
+    let account: Account
+    let session: Session
 
 }
 
 
-struct account: Codable {
+struct Account: Codable {
     
     let registered: Bool
     let key: String
@@ -29,7 +29,7 @@ struct account: Codable {
     
 }
 
-struct session: Codable {
+struct Session: Codable {
     
     let sessionId: String
     let expiration: String
