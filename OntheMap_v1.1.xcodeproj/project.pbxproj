@@ -15,6 +15,7 @@
 		8F3F6C722434A39000857265 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F6C712434A39000857265 /* OnTheMapClient.swift */; };
 		8F41963C244CC1DC002FE60E /* GoogleService-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F41963B244CC1DC002FE60E /* GoogleService-info.plist */; };
 		8F419695244F8164002FE60E /* Keychainitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F419694244F8164002FE60E /* Keychainitem.swift */; };
+		8F4E39C424789023004DA0AA /* JSONtoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F4E39C224789023004DA0AA /* JSONtoCoreData.xcdatamodeld */; };
 		8F5515752466C2E600507569 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5515742466C2E600507569 /* SessionResponse.swift */; };
 		8F55157D2469DB8700507569 /* UdacityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55157C2469DB8700507569 /* UdacityResponse.swift */; };
 		8F55157F2469DD1200507569 /* loginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55157E2469DD1200507569 /* loginRequest.swift */; };
@@ -60,6 +61,7 @@
 		8F41963B244CC1DC002FE60E /* GoogleService-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-info.plist"; sourceTree = SOURCE_ROOT; };
 		8F419692244F6747002FE60E /* OntheMap_v1.1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OntheMap_v1.1.entitlements; sourceTree = "<group>"; };
 		8F419694244F8164002FE60E /* Keychainitem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychainitem.swift; sourceTree = "<group>"; };
+		8F4E39C324789023004DA0AA /* JSONtoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JSONtoCoreData.xcdatamodel; sourceTree = "<group>"; };
 		8F5515742466C2E600507569 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		8F55157C2469DB8700507569 /* UdacityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityResponse.swift; sourceTree = "<group>"; };
 		8F55157E2469DD1200507569 /* loginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginRequest.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				8FFCBC8C242F3D1700DF7891 /* Controller */,
 				8FB18678241FE2FA0003EDA8 /* Info.plist */,
 				8F41963B244CC1DC002FE60E /* GoogleService-info.plist */,
+				8F4E39C224789023004DA0AA /* JSONtoCoreData.xcdatamodeld */,
 				8F419693244F814E002FE60E /* Supporting Files */,
 			);
 			path = OntheMap_v1.1;
@@ -445,6 +448,7 @@
 				8F30FABC247443770033410F /* CurrentUserInfo.swift in Sources */,
 				8FC506F52457649B00C5E1BF /* TabBarController.swift in Sources */,
 				8FB1866F241FE2F80003EDA8 /* LoginViewController.swift in Sources */,
+				8F4E39C424789023004DA0AA /* JSONtoCoreData.xcdatamodeld in Sources */,
 				8F55157F2469DD1200507569 /* loginRequest.swift in Sources */,
 				8F55157D2469DB8700507569 /* UdacityResponse.swift in Sources */,
 				8FB1866B241FE2F80003EDA8 /* AppDelegate.swift in Sources */,
@@ -786,6 +790,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8F4E39C224789023004DA0AA /* JSONtoCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8F4E39C324789023004DA0AA /* JSONtoCoreData.xcdatamodel */,
+			);
+			currentVersion = 8F4E39C324789023004DA0AA /* JSONtoCoreData.xcdatamodel */;
+			path = JSONtoCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8FB1865F241FE2F80003EDA8 /* Project object */;
 }

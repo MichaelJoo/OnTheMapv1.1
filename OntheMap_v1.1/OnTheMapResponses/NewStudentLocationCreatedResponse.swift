@@ -11,7 +11,7 @@ import Foundation
 
 struct NewStudentLocationCreated: Codable {
     
-    let createdAt: String
-    let objectId: String
+    let createdAt: String?
+    let objectId: String?
     
 }

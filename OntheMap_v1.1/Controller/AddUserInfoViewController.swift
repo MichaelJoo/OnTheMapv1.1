@@ -8,20 +8,45 @@
 
 import UIKit
 import Foundation
+import CoreLocation
+
 
 class AddUserInfoViewController: UIViewController {
     
-    var currentSession = SessionResponse(account: Account(registered: true, key: ""), session: Session(sessionId: "", expiration: ""))
+    var students = [StudentDetails]()
+    var userDetail = [UdacityPublicUserData]()
+    
+    lazy var geocoder = CLGeocoder()
+    
+    @IBOutlet weak var userLocation: UITextField!
+    @IBOutlet weak var userMediaURL: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
     
-        OnTheMapClient.getUniqueStudentNames(Session: currentSession) { (studentDetails, error) in
-            
+    @IBAction func findLocation(_ sender: UIButton) {
+        
+        let address = userLocation.text!
+        let mediaURL = userMediaURL.text!
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let LocationViewController = storyBoard.instantiateViewController(withIdentifier: "LocationView") as! LocationViewController
+        self.present(LocationViewController, animated: true, completion: nil)
+        
+       geocoder.geocodeAddressString(address) {
+        (placemarks, error) in
+        
+        OnTheMapClient.processgeoCodeResponse(withPlacemarks: placemarks,error: error)
+        
+        if error != nil {
+            let alertVC = UIAlertController(title: "Invalid Input", message: "No Matching Location found or Invalid User inputs", preferredStyle: .alert)
+            self.present(alertVC, animated: true, completion: nil)
+        } else {
+            return
         }
-     
-    }
+            }
+        }
     
-    }
-
-
+}

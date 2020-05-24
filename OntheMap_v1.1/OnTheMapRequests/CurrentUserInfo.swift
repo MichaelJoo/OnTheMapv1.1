@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct CurrentUserInfo: Codable {
+//struct CurrentUserInfo: Codable {
     
-    var locations = [StudentDetails]()
-    var user: PublicUserInfoDetails?
-    static var shared = CurrentUserInfo()
+    //var locations = [StudentDetails]()
+    //var user: PublicUserInfoDetails?
+    //static var shared = CurrentUserInfo()
     
-}
+//}
 
 
 struct PublicUserInfoDetails: Codable {
     
-    let user: [UdacityPublicUserData]
+    let user: [UdacityPublicUserData]?
     
     enum CodingKeys: String, CodingKey {
           case user = "user"
@@ -29,9 +29,9 @@ struct PublicUserInfoDetails: Codable {
 
 struct UdacityPublicUserData: Codable {
     
-    let lastName: String
-    let firstName: String
-    let key: String
+    let lastName: String?
+    let firstName: String?
+    let key: String?
     
     enum CodingKeys: String, CodingKey {
         case lastName = "last_name"

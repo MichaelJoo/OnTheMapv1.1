@@ -7,14 +7,31 @@
 //
 
 import Foundation
+import CoreLocation
 
 class OnTheMapClient {
+    
+    struct Auth {
+        
+        static var sessionID = ""
+        static var uniqueKey = ""
+        static var firstName = ""
+        static var lastName = ""
+        static var mapString = ""
+        static var mediaURL = ""
+        static var longitude: Double = 0
+        static var latitude: Double = 0
+        
+    }
+    
     
     enum Endpoints {
         
         case PostUdacity
         case GetStudentLocation
         case PostStudentLocation
+        case GetUniqueStudentLocation
+        case GetPublicUserData
         
         
         var StringValue: String {
@@ -23,6 +40,8 @@ class OnTheMapClient {
             case .PostUdacity: return "https://onthemap-api.udacity.com/v1/session"
             case .GetStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
             case .PostStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
+            case .GetUniqueStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation?uniqueKey="
+            case .GetPublicUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.uniqueKey)"
             
             }
         }
@@ -47,7 +66,7 @@ class OnTheMapClient {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
-                    print(responseObject)
+                    
                 }
             } catch {
                 print(error)
@@ -67,6 +86,45 @@ class OnTheMapClient {
         
         return task
     }
+    
+    class func taskForUdacityGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+          
+          let task = URLSession.shared.dataTask(with: url) { data, response, error in
+              
+            if error != nil { // Handle error...
+                  return
+              }
+        
+            let range = 5..<data!.count
+            let newData = data?.subdata(in: range) /* subset response data! */
+            print(String(data: newData!, encoding: .utf8)!)
+        
+            
+              let decoder = JSONDecoder()
+              do {
+                  let responseObject = try decoder.decode(ResponseType.self, from: newData!)
+                  DispatchQueue.main.async {
+                      completion(responseObject, nil)
+                      
+                  }
+              } catch {
+                  print(error)
+                  do {
+                      let errorResponse = try decoder.decode(UdacityResponse.self, from: newData!) as Error
+                      DispatchQueue.main.async {
+                          completion(nil, errorResponse)
+                      }
+                  } catch {
+                      DispatchQueue.main.async {
+                          completion(nil, error)
+                      }
+                  }
+              }
+          }
+          task.resume()
+          
+          return task
+      }
     
 
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) ->Void) {
@@ -122,6 +180,8 @@ class OnTheMapClient {
     
         taskForPOSTRequest(url: URL, responseType: SessionResponse.self, body: loginbody) { response, error in
             if error == nil {
+                Auth.uniqueKey = response?.account.key as! String
+                print(Auth.uniqueKey)
                 completion(true, nil)
             } else {
                 completion(false, nil)
@@ -138,25 +198,20 @@ class OnTheMapClient {
             if let response = response {
                 completion(response.studentInfo, nil)
                 print(response)
+                
             } else {
                 completion([], error)
-                print(error!)
+                
             }
         }
     }
 
     
-    class func getUniqueStudentNames(Session: SessionResponse, completion: @escaping ([StudentDetails], Error?) -> Void) {
+    class func getUniqueStudentNames(completion: @escaping ([StudentDetails], Error?) -> Void) {
         
-        let loggedinuser = Session.account
+         let URL = Endpoints.GetUniqueStudentLocation.url
         
-        let uniqueKey: String = loggedinuser.key
-        
-        let studentlocationURL: String = "https://onthemap-api.udacity.com/v1/StudentLocation?uniqueKey="
-        
-        let url = URL(string: studentlocationURL + uniqueKey)!
-        
-        taskForGETRequest(url: url, responseType: StudentInformation.self) {
+        taskForGETRequest(url: URL, responseType: StudentInformation.self) {
             response, error in
             if let response = response {
                 completion(response.studentInfo, nil)
@@ -168,20 +223,77 @@ class OnTheMapClient {
         }
     }
     
-    class func postStudentLocation (student: StudentDetails, completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
+    class func getPublicUserData(completion: @escaping (UdacityPublicUserData?, Error?) -> Void) {
         
-        let URL = Endpoints.PostStudentLocation.url
-        let newStudentInfo: String = "{\"uniqueKey\": \"\(student.uniqueKey)\", \"firstName\": \"\(student.firstName)\", \"lastName\": \"\(student.lastName)\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 37.386052, \"longitude\": -122.083851}"
+         let URL = Endpoints.GetPublicUserData.url
         
-        taskForPOSTRequest(url: URL, responseType: NewStudentLocationCreated.self, body: newStudentInfo) {
-            response, error in
-                if error == nil {
-                    completion(true, nil)
-                } else {
-                    completion(false, nil)
-                }
+        taskForUdacityGETRequest(url: URL, responseType: UdacityPublicUserData.self) { (response, error) in
+            
+            if let response = response {
+                Auth.firstName = response.firstName!
+                Auth.lastName = response.lastName!
+                completion(response, nil)
+                print(response)
+            } else {
+                completion(nil, error)
+                print(error!)
             }
+            
+        }
+        
+    
     }
+    
+    class func postStudentLocation (completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
+        
+        var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/StudentLocation")!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = "{\"uniqueKey\": \"\(Auth.uniqueKey)\", \"firstName\": \"Michael\", \"lastName\": \"Joo\",\"mapString\": \"Singapore\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 1.0562033, \"longitude\": 95.8581415}".data(using: .utf8)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+          if error != nil { // Handle error…
+              return
+          }
+          print(String(data: data!, encoding: .utf8)!)
+        }
+        task.resume()
+        
+       
+    }
+    
+    class func processgeoCodeResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+        
+        if let error = error {
+            print("Unable to find appropriate Geocode Address (\(error))")
+            
+        } else {
+            var location: CLLocation?
+            
+            if let placemarks = placemarks, placemarks.count > 0 {
+                location = placemarks.first?.location
+            }
+            
+            if let location = location {
+            // write code to post latitude, longitude, mediaURL to logged-in user data
+                Auth.longitude = location.coordinate.longitude
+                Auth.latitude = location.coordinate.latitude
+                
+            } else {
+                print("No matching location found")
+            }
+        }
+    }
+    
+    class func passMediaURL(mediaURL: String?) {
+        if mediaURL != nil {
+            Auth.mediaURL = mediaURL!
+        } else {
+            print("No Media URL entered")
+        }
+        
+    }
+    
     
 }
     

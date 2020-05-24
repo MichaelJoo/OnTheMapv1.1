@@ -216,10 +216,10 @@
             </objects>
             <point key="canvasLocation" x="2795.6521739130435" y="487.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Add User Info View Controller-->
         <scene sceneID="LFb-Ty-B2H">
             <objects>
-                <viewController id="0Vf-iD-AtK" sceneMemberID="viewController">
+                <viewController id="0Vf-iD-AtK" customClass="AddUserInfoViewController" customModule="OntheMap_v1_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="68A-aJ-eyy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,7 +251,7 @@
                                     <color key="titleShadowColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="postLocation:" destination="rCy-VT-pcg" eventType="touchUpInside" id="CQl-KE-0Ia"/>
+                                    <action selector="findLocation:" destination="0Vf-iD-AtK" eventType="touchUpInside" id="Vn6-Gz-4Xl"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvV-YV-gLx">
@@ -271,16 +271,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="59L-Ci-9jq"/>
                     </view>
+                    <connections>
+                        <outlet property="userLocation" destination="TMP-Bd-Tqe" id="SYy-F1-HMd"/>
+                        <outlet property="userMediaURL" destination="b0i-e7-ah4" id="Hds-ZV-GRn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PrC-U4-ZE1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="rCy-VT-pcg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4061" y="91"/>
         </scene>
-        <!--View Controller-->
+        <!--Location View Controller-->
         <scene sceneID="2eH-ca-TOq">
             <objects>
-                <viewController id="4CE-cD-hkK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationView" id="4CE-cD-hkK" customClass="LocationViewController" customModule="OntheMap_v1_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MTd-I7-hkI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,7 +302,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJk-ft-fyV">
-                                <rect key="frame" x="87" y="802" width="241" height="30"/>
+                                <rect key="frame" x="87" y="767" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -316,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJP-pl-w3i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4060.8695652173915" y="-605.35714285714278"/>
+            <point key="canvasLocation" x="5171" y="90"/>
         </scene>
         <!--listView-->
         <scene sceneID="gh7-GB-8vN">
