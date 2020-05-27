@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		51C9D256B9C603D04393A693 /* Pods_OntheMap_v1_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA6E643EC8B596B00B9C520 /* Pods_OntheMap_v1_1.framework */; };
 		8F2D93352474633A00A55E2D /* AddUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D93342474633A00A55E2D /* AddUserInfoViewController.swift */; };
-		8F2D93372474635E00A55E2D /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D93362474635E00A55E2D /* LocationViewController.swift */; };
+		8F2D93372474635E00A55E2D /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D93362474635E00A55E2D /* ConfirmLocationViewController.swift */; };
 		8F30FABC247443770033410F /* CurrentUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30FABB247443770033410F /* CurrentUserInfo.swift */; };
 		8F3367A92473198A00738748 /* NewStudentLocationCreatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3367A82473198A00738748 /* NewStudentLocationCreatedResponse.swift */; };
+		8F35D931247B11080053528D /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F35D930247B11080053528D /* Placemark.swift */; };
 		8F3F6C722434A39000857265 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F6C712434A39000857265 /* OnTheMapClient.swift */; };
 		8F41963C244CC1DC002FE60E /* GoogleService-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F41963B244CC1DC002FE60E /* GoogleService-info.plist */; };
 		8F419695244F8164002FE60E /* Keychainitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F419694244F8164002FE60E /* Keychainitem.swift */; };
 		8F4E39C424789023004DA0AA /* JSONtoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F4E39C224789023004DA0AA /* JSONtoCoreData.xcdatamodeld */; };
 		8F5515752466C2E600507569 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5515742466C2E600507569 /* SessionResponse.swift */; };
 		8F55157D2469DB8700507569 /* UdacityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55157C2469DB8700507569 /* UdacityResponse.swift */; };
-		8F55157F2469DD1200507569 /* loginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55157E2469DD1200507569 /* loginRequest.swift */; };
+		8F55157F2469DD1200507569 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F55157E2469DD1200507569 /* LoginRequest.swift */; };
 		8F551585246B181000507569 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F551584246B181000507569 /* StudentInformation.swift */; };
 		8FB1866B241FE2F80003EDA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB1866A241FE2F80003EDA8 /* AppDelegate.swift */; };
 		8FB1866D241FE2F80003EDA8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB1866C241FE2F80003EDA8 /* SceneDelegate.swift */; };
@@ -54,9 +55,10 @@
 		043BCB4999CD1FD8EEE7E5EE /* Pods-OntheMap_v1.1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OntheMap_v1.1.release.xcconfig"; path = "Target Support Files/Pods-OntheMap_v1.1/Pods-OntheMap_v1.1.release.xcconfig"; sourceTree = "<group>"; };
 		340D76B036C6052CF6F9C4E1 /* Pods-OntheMap_v1.1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OntheMap_v1.1.debug.xcconfig"; path = "Target Support Files/Pods-OntheMap_v1.1/Pods-OntheMap_v1.1.debug.xcconfig"; sourceTree = "<group>"; };
 		8F2D93342474633A00A55E2D /* AddUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserInfoViewController.swift; sourceTree = "<group>"; };
-		8F2D93362474635E00A55E2D /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		8F2D93362474635E00A55E2D /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 		8F30FABB247443770033410F /* CurrentUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserInfo.swift; sourceTree = "<group>"; };
 		8F3367A82473198A00738748 /* NewStudentLocationCreatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStudentLocationCreatedResponse.swift; sourceTree = "<group>"; };
+		8F35D930247B11080053528D /* Placemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
 		8F3F6C712434A39000857265 /* OnTheMapClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapClient.swift; sourceTree = "<group>"; };
 		8F41963B244CC1DC002FE60E /* GoogleService-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-info.plist"; sourceTree = SOURCE_ROOT; };
 		8F419692244F6747002FE60E /* OntheMap_v1.1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OntheMap_v1.1.entitlements; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 		8F4E39C324789023004DA0AA /* JSONtoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JSONtoCoreData.xcdatamodel; sourceTree = "<group>"; };
 		8F5515742466C2E600507569 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		8F55157C2469DB8700507569 /* UdacityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityResponse.swift; sourceTree = "<group>"; };
-		8F55157E2469DD1200507569 /* loginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginRequest.swift; sourceTree = "<group>"; };
+		8F55157E2469DD1200507569 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		8F551584246B181000507569 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		8FA6E643EC8B596B00B9C520 /* Pods_OntheMap_v1_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OntheMap_v1_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB18667241FE2F80003EDA8 /* OntheMap_v1.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OntheMap_v1.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +142,8 @@
 		8F5515812469E3A300507569 /* OnTheMapRequests */ = {
 			isa = PBXGroup;
 			children = (
-				8F55157E2469DD1200507569 /* loginRequest.swift */,
+				8F55157E2469DD1200507569 /* LoginRequest.swift */,
+				8F35D930247B11080053528D /* Placemark.swift */,
 				8F30FABB247443770033410F /* CurrentUserInfo.swift */,
 			);
 			path = OnTheMapRequests;
@@ -241,7 +244,7 @@
 				8FF82B7724575AD300CB12BF /* ListViewController.swift */,
 				8FF82B7524575AC800CB12BF /* MapViewController.swift */,
 				8F2D93342474633A00A55E2D /* AddUserInfoViewController.swift */,
-				8F2D93362474635E00A55E2D /* LocationViewController.swift */,
+				8F2D93362474635E00A55E2D /* ConfirmLocationViewController.swift */,
 				8FC506F42457649B00C5E1BF /* TabBarController.swift */,
 			);
 			path = Controller;
@@ -445,11 +448,12 @@
 				8F5515752466C2E600507569 /* SessionResponse.swift in Sources */,
 				8F3F6C722434A39000857265 /* OnTheMapClient.swift in Sources */,
 				8F3367A92473198A00738748 /* NewStudentLocationCreatedResponse.swift in Sources */,
+				8F35D931247B11080053528D /* Placemark.swift in Sources */,
 				8F30FABC247443770033410F /* CurrentUserInfo.swift in Sources */,
 				8FC506F52457649B00C5E1BF /* TabBarController.swift in Sources */,
 				8FB1866F241FE2F80003EDA8 /* LoginViewController.swift in Sources */,
 				8F4E39C424789023004DA0AA /* JSONtoCoreData.xcdatamodeld in Sources */,
-				8F55157F2469DD1200507569 /* loginRequest.swift in Sources */,
+				8F55157F2469DD1200507569 /* LoginRequest.swift in Sources */,
 				8F55157D2469DB8700507569 /* UdacityResponse.swift in Sources */,
 				8FB1866B241FE2F80003EDA8 /* AppDelegate.swift in Sources */,
 				8FF82B7824575AD300CB12BF /* ListViewController.swift in Sources */,
@@ -457,7 +461,7 @@
 				8F2D93352474633A00A55E2D /* AddUserInfoViewController.swift in Sources */,
 				8FB1866D241FE2F80003EDA8 /* SceneDelegate.swift in Sources */,
 				8FF82B7624575AC800CB12BF /* MapViewController.swift in Sources */,
-				8F2D93372474635E00A55E2D /* LocationViewController.swift in Sources */,
+				8F2D93372474635E00A55E2D /* ConfirmLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

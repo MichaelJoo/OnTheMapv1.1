@@ -280,10 +280,10 @@
             </objects>
             <point key="canvasLocation" x="4061" y="91"/>
         </scene>
-        <!--Location View Controller-->
+        <!--Confirm Location View Controller-->
         <scene sceneID="2eH-ca-TOq">
             <objects>
-                <viewController storyboardIdentifier="LocationView" id="4CE-cD-hkK" customClass="LocationViewController" customModule="OntheMap_v1_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationView" id="4CE-cD-hkK" customClass="ConfirmLocationViewController" customModule="OntheMap_v1_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MTd-I7-hkI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,6 +316,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TaK-JD-bwA"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="bZS-ip-ngb" id="1ce-Pr-3Ft"/>
+                        <outlet property="submitLocation" destination="RJk-ft-fyV" id="4EA-co-Exp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJP-pl-w3i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

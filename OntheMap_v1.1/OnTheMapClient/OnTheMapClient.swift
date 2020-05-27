@@ -294,7 +294,6 @@ class OnTheMapClient {
         
     }
     
-    
 }
     
 
