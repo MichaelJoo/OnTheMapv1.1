@@ -32,8 +32,8 @@ class AddUserInfoViewController: UIViewController, CLLocationManagerDelegate {
         let mediaURL = userMediaURL.text!
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let LocationViewController = storyBoard.instantiateViewController(withIdentifier: "LocationView") as! ConfirmLocationViewController
-        self.present(LocationViewController, animated: true, completion: nil)
+        let ConfirmLocationViewController = storyBoard.instantiateViewController(withIdentifier: "LocationView") as! ConfirmLocationViewController
+        self.present(ConfirmLocationViewController, animated: true, completion: nil)
         
        geocoder.geocodeAddressString(address) {
         (placemarks, error) in
@@ -43,7 +43,7 @@ class AddUserInfoViewController: UIViewController, CLLocationManagerDelegate {
         ConfirmLocationViewController.location = placemarks?.first?.location
         
         
-        print(LocationViewController.location!)
+        print(ConfirmLocationViewController.location!)
         
         print(placemarks!)
         
