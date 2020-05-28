@@ -19,6 +19,7 @@ class OnTheMapClient {
         static var lastName = ""
         static var mapString = ""
         static var mediaURL = ""
+        static var objectId = ""
         static var longitude: Double = 0
         static var latitude: Double = 0
         
@@ -180,7 +181,7 @@ class OnTheMapClient {
     
         taskForPOSTRequest(url: URL, responseType: SessionResponse.self, body: loginbody) { response, error in
             if error == nil {
-                Auth.uniqueKey = response?.account.key as! String
+                Auth.uniqueKey = response!.account.key as! String
                 print(Auth.uniqueKey)
                 completion(true, nil)
             } else {
@@ -249,7 +250,7 @@ class OnTheMapClient {
         var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/StudentLocation")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"uniqueKey\": \"\(Auth.uniqueKey)\", \"firstName\": \"Michael\", \"lastName\": \"Joo\",\"mapString\": \"Singapore\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 1.0562033, \"longitude\": 95.8581415}".data(using: .utf8)
+        request.httpBody = "{\"uniqueKey\": \"\(Auth.uniqueKey)\", \"firstName\": \"\(Auth.firstName)\", \"lastName\": \"\(Auth.lastName)\",\"mapString\": \"\(Auth.mapString)\", \"mediaURL\": \"\(Auth.mediaURL)\",\"latitude\": \(Auth.latitude), \"longitude\": \(Auth.longitude)}".data(using: .utf8)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
           if error != nil { // Handle error…

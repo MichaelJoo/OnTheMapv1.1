@@ -14,11 +14,19 @@ import CoreLocation
 class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var location: CLLocation?
+    var mediaURL: String?
     
     let manager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var submitLocation: UIButton!
+    
+    @IBAction func SubmitLocation(_ sender: UIButton) {
+        
+        OnTheMapClient.postStudentLocation { (success, error) in
+            
+        }
+ 
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +39,6 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest //uses lots of battery
         manager.startUpdatingLocation()
-    
         
         print(location!)
         print("testing MapViewDidAppear")
@@ -61,11 +68,22 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
         mapView.setRegion(region, animated: true)
         
         let pin = MKPointAnnotation()
+        
+        let reuseId = "ConfirmLocationPIN"
+        
+        let name = OnTheMapClient.Auth.firstName + " " + OnTheMapClient.Auth.lastName
+        
+        let pinView = MKPinAnnotationView.init(annotation: pin, reuseIdentifier: reuseId)
+        
+        pinView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        
         pin.coordinate = coordinate
+        pin.title = name
+        pin.subtitle = mediaURL
+
         mapView.addAnnotation(pin)
         
         print("testing render func")
-        
         
     }
 

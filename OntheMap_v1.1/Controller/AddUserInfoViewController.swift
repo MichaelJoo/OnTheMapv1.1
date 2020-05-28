@@ -29,7 +29,7 @@ class AddUserInfoViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func findLocation(_ sender: UIButton) {
         
         let address = userLocation.text!
-        let mediaURL = userMediaURL.text!
+        let usermediaURL = userMediaURL.text!
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let ConfirmLocationViewController = storyBoard.instantiateViewController(withIdentifier: "LocationView") as! ConfirmLocationViewController
@@ -41,7 +41,9 @@ class AddUserInfoViewController: UIViewController, CLLocationManagerDelegate {
         OnTheMapClient.processgeoCodeResponse(withPlacemarks: placemarks,error: error)
         
         ConfirmLocationViewController.location = placemarks?.first?.location
-        
+        ConfirmLocationViewController.mediaURL = self.userMediaURL.text!
+        OnTheMapClient.Auth.mapString = self.userLocation.text!
+        OnTheMapClient.Auth.mediaURL = self.userMediaURL.text!
         
         print(ConfirmLocationViewController.location!)
         
