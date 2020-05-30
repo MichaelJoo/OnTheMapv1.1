@@ -22,7 +22,17 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
     
     @IBAction func SubmitLocation(_ sender: UIButton) {
         
-        OnTheMapClient.postStudentLocation { (success, error) in
+        if OnTheMapClient.Auth.objectId != "" {
+        
+        OnTheMapClient.putStudentLocation { (response, error) in
+            
+        }
+        
+        } else {
+            
+        OnTheMapClient.postStudentLocation { (response, error) in
+                       
+        }
             
         }
  
@@ -40,9 +50,6 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
         manager.desiredAccuracy = kCLLocationAccuracyBest //uses lots of battery
         manager.startUpdatingLocation()
         
-        print(location!)
-        print("testing MapViewDidAppear")
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -50,9 +57,6 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
             manager.stopUpdatingLocation()
             
             render(location)
-            
-            print(location)
-            print("testing LocationManager")
             
         }
     }
@@ -82,8 +86,6 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate, CLLoca
         pin.subtitle = mediaURL
 
         mapView.addAnnotation(pin)
-        
-        print("testing render func")
         
     }
 

@@ -25,11 +25,14 @@ class AddUserInfoViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
 
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     @IBAction func findLocation(_ sender: UIButton) {
         
         let address = userLocation.text!
-        let usermediaURL = userMediaURL.text!
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let ConfirmLocationViewController = storyBoard.instantiateViewController(withIdentifier: "LocationView") as! ConfirmLocationViewController

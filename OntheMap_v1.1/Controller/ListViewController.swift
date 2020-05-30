@@ -12,12 +12,28 @@ import Foundation
 class ListViewController: UITableViewController {
     
     @IBOutlet var listView: UITableView!
+    @IBAction func Logout(_ sender: UIBarButtonItem) {
+        
+        OnTheMapClient.logout { (success, error) in
+            DispatchQueue.main.async {
+            if success {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let LoginView = storyBoard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+            self.present(LoginView, animated: true, completion: nil)
+            } else {
+                let alertVC = UIAlertController(title: "Logout Error", message: "Logout Error", preferredStyle: .alert)
+                self.present(alertVC, animated: true, completion: nil)
+                }
+            }
+        }
+    }
     
     var students = [StudentDetails]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = false
         
         listView.delegate = self
         listView.dataSource = self
@@ -47,7 +63,19 @@ class ListViewController: UITableViewController {
         cell.detailTextLabel?.text = student.mediaURL
         cell.imageView?.image = UIImage(named: "icon_pin")
         
+        
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let student = students[indexPath.row]
+        
+        let url = URL(string: student.mediaURL)!
+            
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        
+    }
+    
     
 }

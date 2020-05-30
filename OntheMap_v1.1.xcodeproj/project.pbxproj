@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51C9D256B9C603D04393A693 /* Pods_OntheMap_v1_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FA6E643EC8B596B00B9C520 /* Pods_OntheMap_v1_1.framework */; };
+		8F0B84872482483400C6BB16 /* studentLocationUpdatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B84862482483400C6BB16 /* studentLocationUpdatedResponse.swift */; };
 		8F2D93352474633A00A55E2D /* AddUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D93342474633A00A55E2D /* AddUserInfoViewController.swift */; };
 		8F2D93372474635E00A55E2D /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D93362474635E00A55E2D /* ConfirmLocationViewController.swift */; };
 		8F30FABC247443770033410F /* CurrentUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30FABB247443770033410F /* CurrentUserInfo.swift */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		043BCB4999CD1FD8EEE7E5EE /* Pods-OntheMap_v1.1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OntheMap_v1.1.release.xcconfig"; path = "Target Support Files/Pods-OntheMap_v1.1/Pods-OntheMap_v1.1.release.xcconfig"; sourceTree = "<group>"; };
 		340D76B036C6052CF6F9C4E1 /* Pods-OntheMap_v1.1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OntheMap_v1.1.debug.xcconfig"; path = "Target Support Files/Pods-OntheMap_v1.1/Pods-OntheMap_v1.1.debug.xcconfig"; sourceTree = "<group>"; };
+		8F0B84862482483400C6BB16 /* studentLocationUpdatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studentLocationUpdatedResponse.swift; sourceTree = "<group>"; };
 		8F2D93342474633A00A55E2D /* AddUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserInfoViewController.swift; sourceTree = "<group>"; };
 		8F2D93362474635E00A55E2D /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
 		8F30FABB247443770033410F /* CurrentUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserInfo.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				8F5515742466C2E600507569 /* SessionResponse.swift */,
 				8F55157C2469DB8700507569 /* UdacityResponse.swift */,
 				8F3367A82473198A00738748 /* NewStudentLocationCreatedResponse.swift */,
+				8F0B84862482483400C6BB16 /* studentLocationUpdatedResponse.swift */,
 			);
 			path = OnTheMapResponses;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				8F35D931247B11080053528D /* Placemark.swift in Sources */,
 				8F30FABC247443770033410F /* CurrentUserInfo.swift in Sources */,
 				8FC506F52457649B00C5E1BF /* TabBarController.swift in Sources */,
+				8F0B84872482483400C6BB16 /* studentLocationUpdatedResponse.swift in Sources */,
 				8FB1866F241FE2F80003EDA8 /* LoginViewController.swift in Sources */,
 				8F4E39C424789023004DA0AA /* JSONtoCoreData.xcdatamodeld in Sources */,
 				8F55157F2469DD1200507569 /* LoginRequest.swift in Sources */,

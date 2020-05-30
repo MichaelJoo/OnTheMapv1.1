@@ -16,7 +16,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     override func viewDidLoad() {
-           super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = false
+        super.viewDidLoad()
         
         OnTheMapClient.getStudentLocation(completion: { (StudentInformation, error) in
                             
@@ -70,7 +72,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
            }
            
         }
-        
+      
 }
     
    
