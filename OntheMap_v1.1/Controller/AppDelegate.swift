@@ -28,7 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
+
         
+        //Add Apple ID provider
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         appleIDProvider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
             switch credentialState {

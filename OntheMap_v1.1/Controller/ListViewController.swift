@@ -12,6 +12,13 @@ import Foundation
 class ListViewController: UITableViewController {
     
     @IBOutlet var listView: UITableView!
+    
+    @IBAction func refresh(_ sender: UIBarButtonItem) {
+        
+        viewDidLoad()
+        
+    }
+    
     @IBAction func Logout(_ sender: UIBarButtonItem) {
         
         
@@ -35,8 +42,6 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = false
         
         listView.delegate = self
         listView.dataSource = self

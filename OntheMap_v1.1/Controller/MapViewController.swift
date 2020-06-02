@@ -14,6 +14,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func refresh(_ sender: UIBarButtonItem) {
+        
+        viewDidLoad()
+        
+    }
     
     override func viewDidLoad() {
         

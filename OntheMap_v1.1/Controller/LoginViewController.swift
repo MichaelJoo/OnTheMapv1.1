@@ -29,10 +29,6 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
-    @IBAction func fbLoginTabbed(_ sender: FBLoginButton) {
- 
-    }
     
     // set-up OnTheMap custom login function
     @IBAction func loginTabbed(_ sender: UIButton) {
@@ -98,10 +94,17 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     
     // Add loginfunction for Facebook login - to read email and password
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        
+        print("FBloginbutton tabbed")
+        
         if error != nil {
-            print(error!)
+            print(error?.localizedDescription as Any)
             return
         }
+        
+        //let credential =FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+       // Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        //}
         
         if let token = AccessToken.current,
             !token.isExpired {
@@ -122,6 +125,14 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             }
             
         }
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let TabBarController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TabBarController
+        self.present(TabBarController, animated: true, completion: nil)
+        
+        OnTheMapClient.getPublicUserData (completion: { (PublicUserInfoDetails, error) in
+            
+        })
         
         print(AccessToken.self)
           

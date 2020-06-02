@@ -84,9 +84,6 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vfO-Vc-OMB"/>
                                 </constraints>
                                 <state key="normal" title="FB Login"/>
-                                <connections>
-                                    <action selector="fbLoginTabbed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mRi-Ji-xa0"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x2t-Xo-vbt">
                                 <rect key="frame" x="87" y="530" width="240" height="50"/>
@@ -216,7 +213,7 @@
             <objects>
                 <viewController id="C0X-oA-GAW" customClass="MapViewController" customModule="OntheMap_v1_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OGj-1n-8fF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6m0-bB-3kn">
@@ -441,7 +438,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Xt1-A4-GNA"/>
+        <segue reference="P7c-8g-IAn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
