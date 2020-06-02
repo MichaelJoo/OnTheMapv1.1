@@ -41,7 +41,7 @@ class OnTheMapClient {
             switch self {
             
             case .PostUdacity: return "https://onthemap-api.udacity.com/v1/session"
-            case .GetStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt"
+            case .GetStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation?order=-updatedAt&limit=100"
             case .PostStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation"
             case .GetUniqueStudentLocation: return "https://onthemap-api.udacity.com/v1/StudentLocation?uniqueKey="
             case .GetPublicUserData: return "https://onthemap-api.udacity.com/v1/users/\(Auth.uniqueKey)"
@@ -184,7 +184,7 @@ class OnTheMapClient {
     
         taskForPOSTRequest(url: URL, responseType: SessionResponse.self, body: loginbody) { response, error in
             if error == nil {
-                Auth.uniqueKey = response!.account.key
+                Auth.uniqueKey = response!.account.key!
                 print(Auth.uniqueKey)
                 completion(true, nil)
             } else {
@@ -193,7 +193,7 @@ class OnTheMapClient {
         }
     }
     
-    class func logout (completion: @escaping (_ success: Bool, _ error: String?) -> Void) {
+    class func logout <ResponseType: Decodable>(responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         
         var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
         request.httpMethod = "DELETE"
@@ -213,9 +213,29 @@ class OnTheMapClient {
           let range = 5..<data!.count
           let newData = data?.subdata(in: range) /* subset response data! */
           print(String(data: newData!, encoding: .utf8)!)
+            
+        
+            let decoder = JSONDecoder()
+               do {
+                let responseObject = try decoder.decode(Session.self, from: newData!)
+                   DispatchQueue.main.async {
+                    completion((responseObject as! ResponseType), nil)
+                   }
+               } catch {
+                print(error)
+                   do {
+                    let errorResponse = try decoder.decode(UdacityResponse.self, from: newData!) as Error
+                       DispatchQueue.main.async {
+                           completion(nil, errorResponse)
+                       }
+                   } catch {
+                       DispatchQueue.main.async {
+                           completion(nil, error)
+                      }
+                }
+            }
         }
         task.resume()
-        
     }
     
     

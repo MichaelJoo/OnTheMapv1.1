@@ -84,6 +84,9 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vfO-Vc-OMB"/>
                                 </constraints>
                                 <state key="normal" title="FB Login"/>
+                                <connections>
+                                    <action selector="fbLoginTabbed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mRi-Ji-xa0"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="x2t-Xo-vbt">
                                 <rect key="frame" x="87" y="530" width="240" height="50"/>
@@ -150,7 +153,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ListView" id="KFE-l6-iwa" customClass="ListViewController" customModule="OntheMap_v1_1" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="scx-em-1vb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>

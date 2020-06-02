@@ -18,8 +18,8 @@ struct SessionResponse: Codable {
 
 struct Account: Codable {
     
-    let registered: Bool
-    let key: String
+    let registered: Bool?
+    let key: String?
     
     enum CodingKeys: String, CodingKey {
     case registered = "registered"
@@ -31,8 +31,8 @@ struct Account: Codable {
 
 struct Session: Codable {
     
-    let sessionId: String
-    let expiration: String
+    let sessionId: String?
+    let expiration: String?
     
     enum CodingKeys: String, CodingKey {
        case sessionId = "id"

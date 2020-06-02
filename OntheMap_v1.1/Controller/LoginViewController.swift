@@ -21,37 +21,20 @@ enum udacityURL: String {
     case error = "This is not a URL"
 }
 
-class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-
-    /// - Tag: provide_presentation_anchor
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-            return self.view.window!
-        }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //set-up Apple login view
-        setupProviderLoginView()
-        
-        // Do any additional setup after loading the view.
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        
-        // Automatically sign in the user.
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-            
-    }
+class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding, LoginButtonDelegate {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        performExistingAccountSetupFlows()
-    }
-    
+
     @IBOutlet weak var loginProviderStackView: UIStackView!
     @IBOutlet weak var FBloginButton: UIButton!
     @IBOutlet weak var emailAddress: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginButton: UIButton!
 
+    @IBAction func fbLoginTabbed(_ sender: FBLoginButton) {
+ 
+    }
+    
+    // set-up OnTheMap custom login function
     @IBAction func loginTabbed(_ sender: UIButton) {
         
         let useremail = emailAddress.text!
@@ -82,6 +65,78 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //set-up Apple login view
+        setupProviderLoginView()
+        
+        //set-up Facebook Login, also to read email and password
+        
+        let FacebookloginButton = FBLoginButton()
+        FacebookloginButton.delegate = self
+        FacebookloginButton.permissions = ["public_profile", "email"]
+        
+
+        // Google Sign-in Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
+        // Google Sign-in Automatically sign in the user.
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+            
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        performExistingAccountSetupFlows()
+    }
+    
+    // Add logout function for Facebook login
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("Logged Out Via Facebook account")
+    }
+    
+    // Add loginfunction for Facebook login - to read email and password
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if error != nil {
+            print(error!)
+            return
+        }
+        
+        if let token = AccessToken.current,
+            !token.isExpired {
+            // User is logged in, do work such as go to next view controller.
+            fetchProfile()
+            showLoginViewController()
+            
+            print("GraphRequest")
+            
+            GraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email"]).start { (GraphRequestConnection, result, Error) in
+                
+                if Error != nil {
+                    print("failed to start graph request:", error!)
+                    return
+                }
+                print("completed login")
+                print(result!)
+            }
+            
+        }
+        
+        print(AccessToken.self)
+          
+    }
+    
+    // Add Loginbutton will login for Facebook login
+    func loginButtonWillLogin(_ loginButton: FBLoginButton) -> Bool {
+        print("buttonwilllogin")
+        return true
+    }
+    
+    // Add fetchprofile function for Facebook login
+    func fetchProfile() {
+        print("fetch profile")
+    }
     
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
@@ -89,10 +144,19 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         if (error == nil) {
           // Perform any operations on signed in user here.
           // ...
+            
+            
+            
         } else {
           print("\(error.localizedDescription)")
         }
     }
+    
+    /// - Tag: provide_presentation_anchor
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+            return self.view.window!
+        }
+    
     
     /// - Tag: add_appleid_button
     func setupProviderLoginView() {
@@ -179,7 +243,7 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
 extension UIViewController {
         func showLoginViewController() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as? LoginViewController {
+            if let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController {
                 loginViewController.modalPresentationStyle = .formSheet
                 loginViewController.isModalInPresentation = true
                 self.present(loginViewController, animated: true, completion: nil)

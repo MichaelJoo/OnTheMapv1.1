@@ -6,5 +6,9 @@
 	<array>
 		<string>Default</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)Do-Hyung-Joo.OntheMap-v1-1</string>
+	</array>
 </dict>
 </plist>

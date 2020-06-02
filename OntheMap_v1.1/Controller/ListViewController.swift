@@ -14,20 +14,23 @@ class ListViewController: UITableViewController {
     @IBOutlet var listView: UITableView!
     @IBAction func Logout(_ sender: UIBarButtonItem) {
         
-        OnTheMapClient.logout { (success, error) in
-            DispatchQueue.main.async {
-            if success {
+        
+        OnTheMapClient.logout (responseType: Session.self, completion: { (response, error) in
+            
+            if response != nil {
+            
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let LoginView = storyBoard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
-            self.present(LoginView, animated: true, completion: nil)
+            let LoginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginView") as! LoginViewController
+            self.present(LoginViewController, animated: true, completion: nil)
+                
             } else {
-                let alertVC = UIAlertController(title: "Logout Error", message: "Logout Error", preferredStyle: .alert)
+                let alertVC = UIAlertController(title: "Logout Failure", message: "Logout Error", preferredStyle: .alert)
                 self.present(alertVC, animated: true, completion: nil)
-                }
             }
-        }
+        })
     }
-    
+        
+
     var students = [StudentDetails]()
     
     override func viewDidLoad() {
@@ -43,11 +46,15 @@ class ListViewController: UITableViewController {
             
             self.students = StudentInformation
             self.listView.reloadData()
+            
+            
         })
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print(students.count)
         return students.count
     }
     
@@ -71,7 +78,7 @@ class ListViewController: UITableViewController {
         
         let student = students[indexPath.row]
         
-        let url = URL(string: student.mediaURL)!
+        let url = URL(string: "https://" + student.mediaURL)!
             
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
         
